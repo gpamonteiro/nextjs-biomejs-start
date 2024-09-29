@@ -3,22 +3,30 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "pnpm run lint & pnpm run formatPrettier & next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "biome lint --write ./src",
+    "formatPrettier": "prettier --write \"**/*.{ts,tsx,js,jsx,md,mdx,css,yaml,yml}\"",
+    "prepare": "husky",
+    "prepush": "pnpm run lint"
   },
   "dependencies": {
+    "next": "14.2.13",
     "react": "^18",
-    "react-dom": "^18",
-    "next": "14.2.13"
+    "react-dom": "^18"
   },
   "devDependencies": {
-    "typescript": "^5",
-    "@types/node": "^20",
+    "@biomejs/biome": "1.9.2",
+    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "@types/node": "^22.7.4",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "husky": "^9.1.6",
     "postcss": "^8",
-    "tailwindcss": "^3.4.1"
+    "prettier": "3.3.3",
+    "prettier-plugin-tailwindcss": "^0.6.8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
   }
 }
